@@ -117,6 +117,7 @@ app.get('*', (req, res) => {
     res.send("404")
 })
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000.')
+const port = process.env.PORT || 3000 // heroku port or default
+app.listen(port, () => {
+    console.log('Server is up on port ' + port +'.')
 })
