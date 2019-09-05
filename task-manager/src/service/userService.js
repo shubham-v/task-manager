@@ -1,8 +1,14 @@
-const User = require('../db/entity/user') 
+const User = require('../models/user') 
 
-const save = (userJson) => {
+const save = (userJson, response) => {
     const user = new User.create(userJson)
-    User.save(user, (user) => console.log(user), (error) => console.log(error))
+    User.save(user, 
+        (u) => response.send(user) , 
+        (error) => { 
+            console.log(error) 
+            response.send({ msg: 'Error while saving user' })
+        }
+    )
 }
 
 module.exports = {

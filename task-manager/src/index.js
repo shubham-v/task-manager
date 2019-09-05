@@ -1,4 +1,5 @@
 const express = require('express')
+require('./db/mongoose')
 const userService = require('./service/userService')
 
 const app = express()
@@ -7,8 +8,7 @@ const port = process.env.PORT || 3000
 app.use(express.json())
 
 app.post('/users', (request, response) => {
-    console.log(request.body)
-    return userService.save(request.body)
+    userService.save(request.body, response)
 })
 
 app.post('', (request, response) => {

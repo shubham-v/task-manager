@@ -39,12 +39,13 @@ const create = mongoose.model('User', {
     }
 })
 
-const Save = (user, success, failure) => 
+const Save = (user, success, failure) => {
     user.save().then((user) => {
         success(user)
     }).catch((error)=> {
         failure(error)
     })
+}
 
 module.exports = {
     create: create,

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const validator = require('validator')
+// const validator = require('validator')
 
 mongoose.connect("mongodb://127.0.0.1:27017/task-manager-api", {
     useNewUrlParser: true,
@@ -58,30 +58,30 @@ mongoose.connect("mongodb://127.0.0.1:27017/task-manager-api", {
 // }) 
 
 
-const Task = mongoose.model('Task', { 
-    name: {
-        type: String
-    },
-    description: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    completed: {
-        type: Boolean,
-        default: false,
-        optional: true
-    }
-})
+// const Task = mongoose.model('Task', { 
+//     name: {
+//         type: String
+//     },
+//     description: {
+//         type: String,
+//         required: true,
+//         trim: true
+//     },
+//     completed: {
+//         type: Boolean,
+//         default: false,
+//         optional: true
+//     }
+// })
 
-const task1 = new Task({
-    name: 'task1',
-    description: '       Not an empty description',
-    //completed: false
-})
+// const task1 = new Task({
+//     name: 'task1',
+//     description: '       Not an empty description',
+//     //completed: false
+// })
 
-task1.save().then((task1) => {
-    console.log(task1)
-}).catch((error) => {
-    console.log(error)
-})
+// task1.save().then((task1) => {
+//     console.log(task1)
+// }).catch((error) => {
+//     console.log(error)
+// })
