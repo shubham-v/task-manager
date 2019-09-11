@@ -1,16 +1,37 @@
 const User = require('../models/user') 
+const commons = require('./commons')
 
-const save = (userJson, response) => {
-    const user = new User.create(userJson)
-    User.save(user, 
-        (u) => response.send(user) , 
-        (error) => { 
-            console.log(error) 
-            response.send({ msg: 'Error while saving user' })
-        }
+const save = (userJson, success, failure) => {
+    const user = new User(userJson)
+    commons.save(user, 
+        success, 
+        failure
     )
 }
 
+const findAll = (success, failure) => commons.findAll(
+    User,
+    success,
+    failure
+)
+
+const findOne = (json, success, failure) => commons.findOne(
+    User,
+    json,
+    success,
+    failure
+)
+
+const findById = (id, success, failure) => commons.findById(
+    User,
+    id,
+    success,
+    failure
+)
+
 module.exports = {
-    save: save
+    save: save,
+    findAll: findAll,
+    findOne: findOne,
+    findById: findById
 }
